@@ -1853,6 +1853,7 @@ function afficherLienPartage(){
     if(url.indexOf("localhost")===7 || url.indexOf("chrome-extension") ===0){
       erreur(5);
     }else{
+      var numero = obtenirParametre("numero");
       url = url.replace("#","");
       url += "?numero=" + numero;
       $.set("lien");
