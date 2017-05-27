@@ -1,0 +1,19 @@
+{
+  "name": "JDicto",
+  "version": "2.0",
+  "nodejs":false,
+  "description": "Entrainement à la dictée",
+  "main": "index.html",
+  "author": "Patrick Cardona",
+  "license": "CECILL-C",
+  "window": {
+    "width": 1000,
+    "height": 800,
+    "position": "center",
+    "min_width": 400,
+    "min_height": 600
+  },
+  "devDependencies": {
+    "uglify-es": "github:mishoo/UglifyJS2#harmony"
+  }
+}

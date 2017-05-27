@@ -1,0 +1,9 @@
+{
+    "app_name":"jDicto",
+    "niveaux":["cm2","6e","5e","4e","3e"],    
+    "niv_cm2":[],
+    "niv_6e":["PC61"],
+    "niv_5e":["PC54"],
+    "niv_4e":[],
+    "niv_3e":[]
+}

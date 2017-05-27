@@ -1,0 +1,29 @@
+Pour modifier le code source et le tester (Mac)
+=========================================
+1) Dans le terminal : préparation d'une phase de développement
+
+      ./prepare_dev.sh
+
+2) Exécution
+
+      ./test.sh -web
+
+Puis, dans le navigateur Chrome : édition du code et vérification au moyen des outils de développement...
+
+Pour tester la version app
+==========================
+Dans le terminal : exécution en mode app
+
+      ./test.sh -app
+
+Pour construire une version
+===========================
+Dans le terminal : construction
+
+      ./build.sh
+
+Pour créer un paquet NW
+=======================
+Dans le terminal :
+
+    ./empaqueter_app.sh
