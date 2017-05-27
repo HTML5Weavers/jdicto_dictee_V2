@@ -1,6 +1,9 @@
 # jdicto_dictee_V2
 Nouvelle version de l'exerciseur de dictée
 
+Démo en ligne :
+https://html5weavers.github.io/jdicto_dictee_V2/dictee/
+
 Nouvelles modalités :
 *********************************************************
 - Entrainement (texte complet) ou découverte (phrase par phrase)
