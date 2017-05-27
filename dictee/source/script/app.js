@@ -1067,7 +1067,7 @@ function obtenirParametre(cle)
        if (params.has(cle)){
          var valeur = params.get(cle);
          sessionStorage.setItem(cle, valeur);
-         document.location.href = window.location.origin;
+         document.location.href = window.location.origin + window.location.pathname;
          return valeur;
        }else{
          // Sinon on cherche la clé dans le LocalStorage
