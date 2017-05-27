@@ -2,7 +2,7 @@
 Nouvelle version de l'exerciseur de dictée
 
 Démo en ligne :
-https://html5weavers.github.io/jdicto_dictee_V2/dictee/
+https://html5weavers.github.io/jdicto_dictee_V2/dictee/index.html
 
 Nouvelles modalités :
 *********************************************************
