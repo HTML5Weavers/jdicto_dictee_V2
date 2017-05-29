@@ -1,168 +1,545 @@
 <!DOCTYPE html>
-<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1">
-<link rel="icon" type="image/png" href="favicon-32.png" />
-<link href="css/fonts.min.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="css/app.min.css" type="text/css">
-<title>JDicto : entrainement à la dictée</title>
-<script defer src="script/app.min.js"></script></head>
-<body id="corps"><header id="entete"><h1><a href="#" id="sommaire"><i class="material-icons" style="font-size: 32px;">home</i></a><a href="#" id="menu"><i class="material-icons" style="font-size: 32px;">menu</i></a>&nbsp;<span id="app_name">JDicto</span>&nbsp;<span id="app_short_desc">Entrainement à la dictée</span></h1>
-<nav id="menu_droit"><span id="aide"><a href="#"><i class="material-icons">help_outline</i></a></span><span id="partage"><a href="#"><i class="material-icons">share</i></a></span></nav></header>
-<aside id="menu_vertical"><nav><ul>
-<li><a href="#" id="item1"><i class="material-icons">headset</i>&nbsp;Écouter…</a></li>
-<li><a href="#" id="item2"><i class="material-icons">edit</i>&nbsp;Saisir…</a></li>
-<li><a href="#" id="item3"><i class="material-icons">compare_arrows</i>&nbsp;Vérifier</a></li>
-<li><a href="#" id="item4"><i class="material-icons">visibility</i>&nbsp;Langue au chat</a></li>
-<li><a href="#" id="item5"><i class="material-icons">settings</i>&nbsp;Préférences</a></li>
-<li><a href="#" id="item6"><i class="material-icons">info_outline</i>&nbsp;À propos de cette dictée</a></li>
-</ul></nav></aside>
-<section id="barre_actions"><ul id="actions">
-<li id="A"><a href="#"><i class="material-icons">compare_arrows</i>Vérifier</a></li>
-<li id="B"><a href="#"><i class="material-icons">autorenew</i>Effacer</a></li>
-<li id="C"><a href="#"><i class="material-icons">navigate_before</i>Reprendre</a></li>
-<li id="D"><a href="#"><i class="material-icons">info_outline</i>À propos</a></li>
-<li id="E"><a href="#"><i class="material-icons">edit</i>Saisir mon texte</a</li>
-<li id="F"><a href="#"><i class="material-icons">headset</i>Commencer</a></li>
-<li id="G"><a href="#"><i class="material-icons">navigate_before</i>Revenir</a></li>
-<li id="H"><a href="#"><i class="material-icons">navigate_before</i>Revenir</a></li>
-<li id="I"><a href="#"><i class="material-icons">share</i>Partager</a></li>
-<li id="J"><a href="#"><i class="material-icons">navigate_before</i>Revenir</a></li>
-</ul></section>
-<section id="section_aide_licence">
-<p>Version : <span id="app_version">?</span></p>
-<nav id="onglets"><ul>
-<li><a href="#" id="onglet_aide"><i class="material-icons">help_outline</i>Aide</a></li>
-<li><a href="#" id="onglet_licence"><i class="material-icons">copyright</i>Licence</a></li>
-<li><a href="#" id="onglet_illustrations"><i class="material-icons">photo</i>Crédits</a></li>
-</ul></nav>
-<article id="article_aide">
-<h1><i class="material-icons">help_outline</i>&nbsp;Aide</h1>
-<h2 id="aide_1" class="deplie">&nbsp;Qu'est-ce que JDicto ?</h2>
-<div id="contenu_aide_1">
-<p>JDicto te permet de t'exercer à la dictée.</p>
-</div>
-<h2 id="aide_2" class="deplie">&nbsp;Mode d'emploi</h2>
-<div id="contenu_aide_2">
-<p class="etape"><span class="badge badge-bleu">1</span>Sélectionne une dictée dans le sommaire (<i class="material-icons">home</i>)</p>
-<p>Si une dictée est déjà sélectionnée, passe à l'étape suivante.</p>
-<p class="information"><i class="material-icons">info_outline</i>Toutes les actions sont accessibles via le menu : <i class='material-icons'>menu</i></p>
-<p class="etape"><span class="badge badge-bleu">2</span>Écoute la dictée (<i class="material-icons">headset</i>) ou effectue des choix (dictée aménagée <i class='material-icons'>playlist_add_check</i>)</p>
-<p>L'application te propose deux modes d'écoute&nbsp;:</p>
-<ul>
-<li>En mode <em>découverte</em>, tu travailles phrase par phrase.</li>
-<li>En mode <em>entrainement</em>, tu travailles sur le texte entier.</li>
-</ul>
-<p class="information"><i class="material-icons">lightbulb_outline</i>En mode <em>découverte</em> ou <em>entrainement</em>, prends ton <em>cahier de brouillon</em> pour écrire d'abord ce que tu entends.</p>
-<p class="information"><i class="material-icons">info_outline</i>Tu peux changer de mode dans les <kbd>préférences</kbd> (<i class="material-icons">settings</i>)</p>
-<p class="etape"><span class="badge badge-bleu">3</span>Saisis ton texte à partir de ton brouillon (<i class="material-icons">edit</i>)</p>
-<p class="etape"><span class="badge badge-bleu">4</span>Vérifie-le au moyen de l'assistant de correction (<i class="material-icons">compare_arrows</i>)</p>
-<p class="attention"><i class="material-icons">error_outline</i>Il sera sans doute nécessaire de recommencer ces étapes 3 et 4.</p>
-</div>
-<h2 id="aide_3" class="deplie">&nbsp;Et si je n'y arrive pas ?</h2>
-<div id="contenu_aide_3">
-<p class="etape">Si malgré tous tes efforts, tu n'arrives pas à écrire correctement le texte, tu peux <em>donner ta langue au chat</em> (<i class="material-icons">visibility</i>)</p>
-<p>Tu pourras réessayer dans quelque temps ou en parler avec ton professeur ou tes camarades.</p>
-</div></article>
-<article id="article_licence">
-<h1><i class="material-icons">copyright</i>&nbsp;Licence</h1>
-<p>Copyright Patrick CARDONA 2017</p>
-<p>pcardona34@gmail.com</p>
-<p>Ce logiciel est un programme informatique permettant de s'exercer à la dictée.</p>
-<p>Ce logiciel est régi par la licence CeCILL-C soumise au droit français et respectant les principes de diffusion des logiciels libres. Vous pouvez utiliser, modifier et/ou redistribuer ce programme sous les conditions de la licence CeCILL-C telle que diffusée par le CEA, le CNRS et l'INRIA sur le site "http://www.cecill.info".</p>
-<p>En contrepartie de l'accessibilité au code source et des droits de copie, de modification et de redistribution accordés par cette licence, il n'est offert aux utilisateurs qu'une garantie limitée.  Pour les mêmes raisons, seule une responsabilité restreinte pèse sur l'auteur du programme, le titulaire des droits patrimoniaux et les concédants successifs.</p>
-<p>À cet égard  l'attention de l'utilisateur est attirée sur les risques associés au chargement,  à l'utilisation,  à la modification et/ou au développement et à la reproduction du logiciel par l'utilisateur étant donné sa spécificité de logiciel libre, qui peut le rendre complexe à manipuler et qui le réserve donc à des développeurs et des professionnels avertis possédant  des  connaissances  informatiques approfondies. Les utilisateurs sont donc invités à charger  et  tester  l'adéquation  du logiciel à leurs besoins dans des conditions permettant d'assurer la sécurité de leurs systèmes et ou de leurs données et, plus généralement, à l'utiliser et l'exploiter dans les mêmes conditions de sécurité.</p>
-<p>Le fait que vous puissiez accéder à cet en-tête signifie que vous avez pris connaissance de la licence CeCILL-C, et que vous en avez accepté les termes.</p>
-</article>
-<article id="article_illustrations">
-<h1><i class="material-icons">photo</i>&nbsp;Crédits</h1>
-<p>Les icônes utilisées dans l'application proviennent de la collection <em>Material-icons</em> de l'éditeur <em>Google</em> :
-<br /><i class="material-icons">link</i><a href="https://material.io/icons/" target="_blank">Lien</a></p>
-<p>Le dessin du chat provient du site Pixabay :
-<br /><i class="material-icons">link</i><a href="https://pixabay.com/fr/black-cat-f%C3%A9lin-moustaches-153956/" target="_blank">Lien</a></p></p>
-</article></section>
-<section id="section_partage">
-<h1><i class="material-icons">share</i>&nbsp;Partager cette dictée</h1>
-<div class="zone_partage">
-<p>Pour partager cette dictée, copiez et diffusez le lien suivant&nbsp;:</p>
-<p id="lien" contentEditable="true"></p>
-</div></section>
-<aside id="menu_sommaire">
-<h1><i class="material-icons">home</i>&nbsp;Sommaire</h1>
-<h2 class="deplie" id="sommaire_cm2" title="sommaire_cm2">&nbsp;En CM2 <span id="nb_cm2"></span></h2>
-<ul id="cm2"></ul>
-<h2 class="deplie" id="sommaire_6e" title="sommaire_6e">&nbsp;En sixième <span id="nb_6e"></span></h2>
-<ul id="6e"></ul>
-<h2 class="deplie" id="sommaire_5e" title="sommaire_5e">&nbsp;En cinquième <span id="nb_5e"></span></h2>
-<ul id="5e"></ul>
-<h2 class="deplie" id="sommaire_4e" title="sommaire_4e">&nbsp;En quatrième <span id="nb_4e"></span></h2>
-<ul id="4e"></ul>
-<h2 class="deplie" id="sommaire_3e" title="sommaire_3e">&nbsp;En troisième <span id="nb_3e"></span></h2>
-<ul id="3e"></ul></aside>
-<section id="section_item1">
-<h1><i class="material-icons">headset</i></h1>
-<p>Modalité : <span id="modalite_choisie">découverte</span> <a href="#" title="Changer de mode d'utilisation" id="changer_modalite">(<i class="material-icons">settings</i>)</a></p>
-<fieldset><legend>Sélecteur de phrase</legend>
-<p id="selecteur_phrase"></p></fieldset>
-<fieldset><legend id="phrase">Phrase 1</legend>
-<input type="hidden" id="texte" value="1" />
-<div id="voix_de_synthese">
-<a href="#" id="lire"><i class="material-icons">play_circle_outline</i>Lire</a>&nbsp;<a href="#" id="pause"><i class="material-icons">pause_circle_outline</i>Pause</a>&nbsp;<a href="#" id="fin"><i class="material-icons">stop</i>Fin</a>
-</div>
-<div id="voix_enregistree"><a href="#" id="lire_audio"><i class="material-icons">play_circle_outline</i>Lire</a>&nbsp;<a href="#" id="pause_audio"><i class="material-icons">pause_circle_outline</i>Pause</a>&nbsp;<a href="#" id="fin_audio"><i class="material-icons">stop</i>Fin</a>
-</div>
-<div id="contenu_dictee_amenagee">
-<p id="dictam"></p>
-</div></fieldset>
-<p><audio id="lecteur_audio"><source src="" type="audio/ogg" />Votre navigateur n'est pas compatible avec le lecteur audio HTML5.</audio></p>
-</section>
-<section id="section_item2">
-<h1><i class="material-icons">edit</i>&nbsp;Saisir à partir du cahier de brouillon</h1>
-<p id="info_saisie">Phrase 1</p>
-<div id="cadre_editeur"><table id="table_spec"><tr>
-<td class="spec">«</td><td class="spec">—</td><td class="spec">»</td><td class="spec">&hellip;</td><td class="spec">œ</td><td class="spec">Œ</td><td class="spec">É</td><td class="spec">È</td><td class="spec">À</td>
-</tr></table></div>
-<textarea id="editeur" placeholder="Saisis ici le texte de la dictée ou de l'extrait à partir de ton brouillon." cols="29" rows="14" spellcheck="false" class="cursive"></textarea>
-<div id="compteur"><span id="nombre">0</span><span id="libelle_car"> caractère</span> <span id="curseur">?</span></div>
-</section>
-<section id="section_item3">
-<h1><i class="material-icons">compare_arrows</i>&nbsp;Vérification</h1>
-<p></p>
-</section>
-<section id="section_item4">
-<h1><i class="material-icons">visibility</i>&nbsp;Solution</h1>
-<img src="icons/chat.png" height="320" width="182" alt="chat" align="left" />
-<p id="solution">Texte factice</p><p id="solution_affichee"></p>
-</section>
-<section id="section_item5">
-<h1><i class="material-icons">settings</i>&nbsp;Mes préférences</h1>
-<fieldset><legend>Mode d'utilisation</legend><label>Voix de synthèse :</label>
-<br /><label><input type="radio" name="modalite" value="decouverte" id="decouverte">Découverte (voix de synthèse)</label>
-<br /><label><input type="radio" name="modalite" value="entrainement" id="entrainement">Entrainement (voix de synthèse)</label>
-<br /><br /><label>Voix enregistrée :</label>
-<br /><label><input type="radio" name="modalite" value="decouverte_audio" id="decouverte_audio" checked>Découverte</label>
-<br /><label><input type="radio" name="modalite" value="entrainement_audio" id="entrainement_audio">Entrainement</label>
-<br /><br /><label>Dictée silencieuse :</label><br />
-<label><input type="radio" name="modalite" value="dictee_amenagee" id="dictee_amenagee">Dictée aménagée</label>
-</fieldset>
-<fieldset><legend>Apparence du texte dans l'éditeur</legend>
-<input type="checkbox" id="police_editeur" checked />
-<label>&nbsp;Écriture cursive</label></fieldset>
-<fieldset><legend>Voix de synthèse</legend>
-<input type="checkbox" id="ponctuation" checked />
-<label>&nbsp;Indiquer la ponctuation</label>
-<p><label>Débit de la voix : <span id="mon_debit">0.6</span></label>
-<br /><input type="range" min="0.5" max="1.2" value="0.6" step="0.1" name="debit"></p></fieldset>
-<fieldset><legend>Options avancées</legend>
-<p><label>Personnalité de la voix de synthèse : <span id="ma_voix"></span> - <span id="nom_voix">?</span></label>
-<br /><label><select id="voix"></select></label></p></fieldset></section>
-<section id="section_item6">
-<h1><i class="material-icons">info_outline</i>&nbsp;À propos de cette dictée</h1>
-<fieldset><legend id="titre">Titre de la dictée</legend>
-<p>Référence : <span id=reference></span></p>
-<p>Professeur : <span id="prof">?</span></p>
-<p>Auteur : <span id="auteur"></span></p>
-<p>Titre de l'ouvrage : <cite id="ouvrage"></cite></p>
-<p>Droit d'auteur : <span id="legal">à préciser</p></fieldset></section>
-<aside><div id="section_message">
-<p id="bouton_fermer_message">&#9447;</p>
-<p id="contenu_message">Aucun message</p></div></aside>
-</body></html>
+
+<!--
+// JDITO
+// dictee : exercice d'entrainement à la dictée
+// Page HTML : index.html
+	  -->
+
+<!-- LICENCE ABREGEE -->
+<!-- Copyright Patrick CARDONA 2017
+pcardona34@gmail.com
+
+Ce logiciel est un programme informatique permettant de s'exercer à la dictée.
+
+Ce logiciel est régi par la licence CeCILL-C soumise au droit français et
+respectant les principes de diffusion des logiciels libres.
+
+VOIR la licence complète dans le dossier "source".
+
+FIN DE LA LICENCE ABREGEE -->
+
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1">
+
+    <link rel="icon" type="image/png" href="favicon-32.png" />
+    <!-- Chargement de la feuille en lien avec les fontes Material+Icons -->
+    <link href="css/fonts.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/app.min.css" type="text/css">
+    <!-- Titre rempli dynamiquement -->
+    <title>JDicto : entrainement à la dictée</title>
+
+    <!-- Librairies -->
+    <script src="lib/qrcodejs/qrcode.min.js"></script>
+    <script src="lib/JsBarcode/JsBarcode.code39.min.js"></script>
+    <!-- Script principal de l'application -->
+    <script defer src="script/app.min.js"></script>
+
+  </head>
+
+  <body id="corps">
+
+<!-- =========================================================== -->
+<!-- EN-TÊTE -->
+    <header id="entete">
+      <h1>
+		<a href="#" id="sommaire"><i class="material-icons" style="font-size: 32px;">home</i></a>
+        <a href="#" id="menu"><i class="material-icons" style="font-size: 32px;">menu</i></a>
+        &nbsp;<span id="app_name">JDicto</span>
+        &nbsp;<span id="app_short_desc">Entrainement à la dictée</span>
+     </h1>
+     <nav id="menu_droit">
+        <span id="aide"><a href="#"><i class="material-icons">help_outline</i></a></span>
+        <span id="partage"><a href="#"><i class="material-icons">share</i></a></span>
+     </nav>
+    </header>
+
+
+<!-- =========================================================== -->
+  <!-- Menu vertical -->
+    <aside id="menu_vertical">
+    <nav>
+     <ul>
+       <li><a href="#" id="item1"><i class="material-icons">headset</i>&nbsp;Écouter…</a></li>
+       <li><a href="#" id="item2"><i class="material-icons">edit</i>&nbsp;Saisir…</a></li>
+       <li><a href="#" id="item3"><i class="material-icons">compare_arrows</i>&nbsp;Vérifier</a></li>
+       <li><a href="#" id="item4"><i class="material-icons">visibility</i>&nbsp;Langue au chat</a></li>
+       <li><a href="#" id="item5"><i class="material-icons">settings</i>&nbsp;Préférences</a></li>
+       <li><a href="#" id="item6"><i class="material-icons">info_outline</i>&nbsp;À propos de cette dictée</a></li>
+      </ul>
+    </nav>
+    </aside>
+
+
+<!-- =========================================================== -->
+  <!-- Barre des actions -->
+  <section id="barre_actions">
+    <ul id="actions">
+    <li id="A"><a href="#"><i class="material-icons">compare_arrows</i>Vérifier</a></li>
+    <li id="B"><a href="#"><i class="material-icons">autorenew</i>Effacer</a></li>
+    <li id="C"><a href="#"><i class="material-icons">navigate_before</i>Reprendre</a></li>
+    <li id="D"><a href="#"><i class="material-icons">info_outline</i>À propos</a></li>
+    <li id="E"><a href="#"><i class="material-icons">edit</i>Saisir mon texte</a</li>
+    <li id="F"><a href="#"><i class="material-icons">headset</i>Commencer</a></li>
+    <li id="G"><a href="#"><i class="material-icons">navigate_before</i>Revenir</a></li>
+    <li id="H"><a href="#"><i class="material-icons">navigate_before</i>Revenir</a></li>
+    <li id="I"><a href="#"><i class="material-icons">share</i>Partager</a></li>
+    <li id="J"><a href="#"><i class="material-icons">navigate_before</i>Revenir</a></li>
+    </ul>
+  </section>
+
+<!-- =========================================================== -->
+	<!-- sections générales : AIDE, PARTAGE, etc. -->
+
+    <section id="section_aide_licence">
+
+    <p>Version : <span id="app_version">?</span></p>
+
+    <nav id="onglets">
+		<ul>
+			<li><a href="#" id="onglet_aide"><i class="material-icons">help_outline</i>Aide</a></li>
+			<li><a href="#" id="onglet_licence"><i class="material-icons">copyright</i>Licence</a></li>
+			<li><a href="#" id="onglet_illustrations"><i class="material-icons">photo</i>Crédits</a></li>
+		</ul>
+    </nav>
+
+    <!-- ************************************************ -->
+    <!-- AIDE -->
+    <article id="article_aide">
+
+	<h1><i class="material-icons">help_outline</i>&nbsp;Aide</h1>
+
+	<!-- partie 1 de l'aide -->
+    <h2 id="aide_1" class="deplie">&nbsp;Qu'est-ce que JDicto ?</h2>
+
+    <div id="contenu_aide_1">
+    <p>JDicto te permet de t'exercer à la dictée.</p>
+    </div>
+
+	<!-- partie 2 de l'aide -->
+	<h2 id="aide_2" class="deplie">&nbsp;Mode d'emploi</h2>
+
+	<div id="contenu_aide_2">
+
+	<p class="etape"><span class="badge badge-bleu">1</span>Sélectionne une
+	dictée dans le sommaire
+	(<i class="material-icons">home</i>)</p>
+	<p>Si une dictée est déjà sélectionnée, passe à l'étape suivante.</p>
+	<p class="information"><i class="material-icons">info_outline</i>Toutes les
+	actions sont accessibles via le menu : <i class='material-icons'>menu</i></p>
+
+	<p class="etape"><span class="badge badge-bleu">2</span>Écoute la dictée (<i class="material-icons">headset</i>)
+	ou effectue des choix (dictée aménagée <i class='material-icons'>playlist_add_check</i>)</p>
+	<p>L'application te propose deux modes d'écoute&nbsp;:</p>
+    <ul>
+    <li>En mode <em>découverte</em>, tu travailles phrase par phrase.</li>
+    <li>En mode <em>entrainement</em>, tu travailles sur le texte entier.</li>
+    </ul>
+
+    <p class="information"><i class="material-icons">lightbulb_outline</i>En mode <em>découverte</em> ou <em>entrainement</em>, prends ton <em>cahier de brouillon</em> pour écrire
+	 d'abord ce que tu entends.</p>
+
+	<p class="information"><i class="material-icons">info_outline</i>Tu peux changer de mode dans les <kbd>préférences</kbd> (<i class="material-icons">settings</i>)</p>
+
+	<p class="etape"><span class="badge badge-bleu">3</span>Saisis ton texte à partir de ton brouillon
+	 (<i class="material-icons">edit</i>)</p>
+
+	 <p class="etape"><span class="badge badge-bleu">4</span>Vérifie-le au moyen de l'assistant de
+	 correction (<i class="material-icons">compare_arrows</i>)</p>
+
+	 <p class="attention"><i class="material-icons">error_outline</i>Il sera sans doute nécessaire de recommencer ces étapes 3 et 4.</p>
+	</div>
+
+	<!-- partie 3 de l'aide -->
+    <h2 id="aide_3" class="deplie">&nbsp;Et si je n'y arrive pas ?</h2>
+
+	<div id="contenu_aide_3">
+    <p class="etape">Si malgré tous tes efforts, tu n'arrives pas à écrire correctement le texte,
+     tu peux <em>donner ta langue au chat</em> (<i class="material-icons">visibility</i>)</p>
+	<p>Tu pourras réessayer dans quelque temps ou en parler avec ton professeur ou tes camarades.</p>
+    </div>
+
+    </article>
+
+    <!-- ************************************************ -->
+	   <!-- LICENCE -->
+    <article id="article_licence">
+
+    <h1><i class="material-icons">copyright</i>&nbsp;Licence</h1>
+
+	<p>Copyright Patrick CARDONA 2017</p>
+	<p>pcardona34@gmail.com</p>
+
+	<p>Ce logiciel est un programme informatique permettant de s'exercer à la dictée.</p>
+
+	<p>Ce logiciel est régi par la licence CeCILL-C soumise au droit français et
+	respectant les principes de diffusion des logiciels libres. Vous pouvez
+	utiliser, modifier et/ou redistribuer ce programme sous les conditions
+	de la licence CeCILL-C telle que diffusée par le CEA, le CNRS et l'INRIA
+	sur le site "http://www.cecill.info".</p>
+
+	<p>En contrepartie de l'accessibilité au code source et des droits de copie,
+	de modification et de redistribution accordés par cette licence, il n'est
+	offert aux utilisateurs qu'une garantie limitée.  Pour les mêmes raisons,
+	seule une responsabilité restreinte pèse sur l'auteur du programme,  le
+	titulaire des droits patrimoniaux et les concédants successifs.</p>
+
+	<p>À cet égard  l'attention de l'utilisateur est attirée sur les risques
+	associés au chargement,  à l'utilisation,  à la modification et/ou au
+	développement et à la reproduction du logiciel par l'utilisateur étant
+	donné sa spécificité de logiciel libre, qui peut le rendre complexe à
+	manipuler et qui le réserve donc à des développeurs et des professionnels
+	avertis possédant  des  connaissances  informatiques approfondies.  Les
+	utilisateurs sont donc invités à charger  et  tester  l'adéquation  du
+	logiciel à leurs besoins dans des conditions permettant d'assurer la
+	sécurité de leurs systèmes et ou de leurs données et, plus généralement,
+	à l'utiliser et l'exploiter dans les mêmes conditions de sécurité.</p>
+
+	<p>Le fait que vous puissiez accéder à cette section signifie que vous avez
+	pris connaissance de la licence CeCILL-C, et que vous en avez accepté les
+	termes.</p>
+
+	</article>
+
+  <!-- ************************************************ -->
+  <!-- CREDITS : sources des illustrations -->
+  <article id="article_illustrations">
+
+    <h1><i class="material-icons">photo</i>&nbsp;Crédits</h1>
+
+	  <p>Icônes utilisées dans l'application : police de caractères <em>Material-icons</em>
+    <br />Éditeur : <em>Google inc.</em>
+    <br />Licence : MIT
+    <br /><i class="material-icons">link</i><a href="https://material.io/icons/" target="_blank">Lien</a></p>
+
+    <p>Illustration de la section <em>langue au chat</em> : Site <em>Pixabay</em>.
+    <br />Auteur : anonyme
+    <br />Licence : Creative Commons CC0 - Domaine Public.
+    <br /><i class="material-icons">link</i><a href="https://pixabay.com/fr/black-cat-f%C3%A9lin-moustaches-153956/" target="_blank">Lien</a></p>
+
+    <p>Police de caractères du titre de l'application et de l'éditeur de texte : <em>Satisfy</em>
+      <br />Éditeur : Google inc.
+      <br />Licence : MIT
+      <br /><i class="material-icons">link</i><a href="https://fonts.google.com/specimen/Satisfy" target="_blank">Lien</a></p>
+
+
+    <p>Code Javascript de génération du code-barre : <em>JsBarcode</em>
+      <br />Auteur : &copy; 2016 Johan Lindell
+      <br />Licence : MIT
+      <br /><i class="material-icons">link</i><a href="https://github.com/lindell/JsBarcode" target="_blank">Lien</a></p>
+
+    <p>Code Javascript de génération du QRCode : <em>qrcodejs</em>
+      <br />Auteur : Copyright &copy; 2012 <em>davidshimjs</em>
+      <br />Licence : MIT
+      <br /><i class="material-icons">link</i><a href="https://davidshimjs.github.io/qrcodejs/" target="_blank">Lien</a></p>
+
+
+	</article>
+
+	</section>
+
+	<!-- FIN SECTION AIDE - LICENCE -->
+
+<!-- =========================================================== -->
+	<!-- PARTAGE -->
+
+	<section id="section_partage">
+    <h1><i class="material-icons">share</i>&nbsp;Partager cette dictée</h1>
+     <div class="zone_partage">
+     	<p>Pour partager cette dictée, copiez et diffusez le lien suivant&nbsp;:</p>
+    	<p id="lien" contentEditable="true"></p>
+    </div>
+
+      <p><a href="#" id="lien_qrcode"><i class="material-icons">file_download</i>Télécharger le QRCode</a></p>
+    <!-- QRCODE -->
+      <div id="qrcode"></div>
+
+    </section>
+
+
+<!-- =========================================================== -->
+<!-- SECTIONS SPECIFIQUES -->
+
+  <!-- ************************************************ -->
+  <!-- Sommaire des dictées par niveau -->
+	<aside id="menu_sommaire">
+
+    <h1><i class="material-icons">home</i>&nbsp;Sommaire</h1>
+
+     	<h2 class="deplie" id="sommaire_cm2" title="sommaire_cm2">&nbsp;En CM2 <span id="nb_cm2"></span></h2>
+     	<ul id="cm2"></ul>
+
+     	<h2 class="deplie" id="sommaire_6e" title="sommaire_6e">&nbsp;En sixième <span id="nb_6e"></span></h2>
+     	<ul id="6e"></ul>
+
+     	<h2 class="deplie" id="sommaire_5e" title="sommaire_5e">&nbsp;En cinquième <span id="nb_5e"></span></h2>
+     	<ul id="5e"></ul>
+
+     	<h2 class="deplie" id="sommaire_4e" title="sommaire_4e">&nbsp;En quatrième <span id="nb_4e"></span></h2>
+     	<ul id="4e"></ul>
+
+     	<h2 class="deplie" id="sommaire_3e" title="sommaire_3e">&nbsp;En troisième <span id="nb_3e"></span></h2>
+     	<ul id="3e"></ul>
+
+    </aside>
+
+
+<!-- =========================================================== -->
+  	<!-- sections spécifiques de l'exerciseur -->
+
+    <!-- ************************************************ -->
+    <!-- ECOUTER LA DICTEE (voix de synthèse / voix enregistrée
+    ou CHOISIR (DICTEE AMENAGEE) -->
+    <!-- ************************************************ -->
+    <section id="section_item1">
+    <h1><i class="material-icons">headset</i></h1>
+    <!-- Rappel de la modalité choisie dans les préférences -->
+    <p>Modalité : <span id="modalite_choisie">découverte</span>
+    <a href="#" title="Changer de mode d'utilisation" id="changer_modalite">(<i class="material-icons">settings</i>)</a>
+    </p>
+
+    <!-- ************************************************ -->
+    <!-- Sélecteur de phrase -->
+     <fieldset>
+      <legend>Sélecteur de phrase</legend>
+    	<p id="selecteur_phrase">
+
+    	</p>
+    </fieldset>
+
+      <!-- ************************************************ -->
+      <!-- Un lecteur de texte (voix de synthèse ou voix enregistrée) -->
+
+      <!-- ************************************************ -->
+      <!-- Echo de la phrase sélectionnée -->
+      <fieldset>
+      <legend id="phrase">Phrase 1</legend>
+		<input type="hidden" id="texte" value="1" />
+
+      <!-- ************************************************ -->
+      <!-- contrôles de la voix de synthèse -->
+      <div id="voix_de_synthese">
+      <a href="#" id="lire">
+		<i class="material-icons">play_circle_outline</i>
+      	Lire
+      </a>&nbsp;
+
+      <a href="#" id="pause">
+      	<i class="material-icons">pause_circle_outline</i>
+		Pause
+      </a>&nbsp;
+
+      <a href="#" id="fin">
+      	<i class="material-icons">stop</i>
+		Fin
+      </a>
+      </div>
+      <!-- ************************************************ -->
+      <!-- ici commencent les contrôles du lecteur de voix enregistrée (dicteeXX.ogg)... -->
+		<div id="voix_enregistree">
+      <a href="#" id="lire_audio">
+		<i class="material-icons">play_circle_outline</i>
+      	Lire
+      </a>&nbsp;
+
+      <a href="#" id="pause_audio">
+      	<i class="material-icons">pause_circle_outline</i>
+		Pause
+      </a>&nbsp;
+
+      <a href="#" id="fin_audio">
+      	<i class="material-icons">stop</i>
+		Fin
+      </a>
+    </div>
+      <!-- ************************************************ -->
+      <!-- DICTEE AMENAGEE -->
+      <div id="contenu_dictee_amenagee">
+			<p id="dictam"></p>
+      </div>
+
+      </fieldset>
+
+    <!-- Contrôles masqués du lecteur audio classique -->
+		<!-- Permet le média chapitré : les boutons effectifs sont affichés au-dessus  ! -->
+      <p><audio id="lecteur_audio">
+			<source src="" type="audio/ogg" />
+		Votre navigateur n'est pas compatible avec le lecteur audio HTML5.
+		</audio></p>
+    </section>
+
+<!-- =========================================================== -->
+	<!-- SECTION 2 - EDITEUR pour la saisie du texte -->
+<!-- =========================================================== -->
+
+    <section id="section_item2">
+    <h1><i class="material-icons">edit</i>&nbsp;Saisir à partir du cahier de brouillon</h1>
+
+      <!-- Rappel de la phrase sélectionnée -->
+       <p id="info_saisie">Phrase 1</p>
+       <!-- Editeur de texte -->
+     <div id="cadre_editeur">
+      <!-- Barre d'icônes pour insérer des caractères spéciaux -->
+      <table id="table_spec">
+
+					<tr>
+					<td class="spec">«</td>
+					<td class="spec">—</td>
+					<td class="spec">»</td>
+					<td class="spec">&hellip;</td>
+					<td class="spec">œ</td>
+					<td class="spec">Œ</td>
+					<td class="spec">É</td>
+					<td class="spec">È</td>
+					<td class="spec">À</td>
+					</tr>
+	</table>
+	</div>
+  <!-- Zone de saisie -->
+  <textarea id="editeur"
+		placeholder="Saisis ici le texte de la dictée ou de l'extrait à partir de ton brouillon."
+      cols="29" rows="14" spellcheck="false"
+      class="cursive"></textarea>
+
+      <!-- Compteur de caractères -->
+      <div id="compteur"><span id="nombre">0</span><span id="libelle_car"> caractère</span>
+      <span id="curseur">?</span>
+      </div>
+      <!-- Fin éditeur -->
+    </section>
+
+
+<!-- =========================================================== -->
+	<!-- SECTION 3 - VERIFICATION -->
+<!-- =========================================================== -->
+    <section id="section_item3">
+    <h1><i class="material-icons">compare_arrows</i>&nbsp;Vérification</h1>
+
+       <p></p>
+    </section>
+
+<!-- =========================================================== -->
+	<!-- SECTION 4 - SOLUTION : "...langue au chat"-->
+<!-- =========================================================== -->
+
+    <section id="section_item4">
+    <h1><i class="material-icons">visibility</i>&nbsp;Solution</h1>
+
+    	<!-- Texte factice -->
+       <img src="icons/chat.png" height="320" width="182" alt="chat" align="left" />
+       <p id="solution">Texte factice</p>
+       <p id="solution_affichee"></p>
+    </section>
+
+<!-- =========================================================== -->
+	<!-- SECTION 5 - PREFERENCES -->
+<!-- =========================================================== -->
+    <section id="section_item5">
+    <h1><i class="material-icons">settings</i>&nbsp;Mes préférences</h1>
+
+	 <!-- 	Choix du mode : découverte ou entrainement / Voix de synthèse ou audio
+    ou Dictée aménagée -->
+
+	 <fieldset><legend>Mode d'utilisation</legend>
+	 	<p><label for="modalite">Modalité : </label></p>
+
+    <p><input type="radio" name="modalite" value="decouverte_audio" id="decouverte_audio" checked>Découverte (voix enregistrée)
+		<br /><input type="radio" name="modalite" value="entrainement_audio" id="entrainement_audio">Entrainement (voix enregistrée)
+    <br /><input type="radio" name="modalite" value="dictee_amenagee" id="dictee_amenagee">Dictée aménagée</p>
+    </p>
+    <p><label>Voix de synthèse (modalité expérimentale) : </label></p>
+    <p><input type="radio" name="modalite" value="decouverte" id="decouverte">Découverte (voix de synthèse)
+		<br /><input type="radio" name="modalite" value="entrainement" id="entrainement">Entrainement (voix de synthèse)</p>
+
+     </fieldset>
+
+       <!-- Choix de la police de l'éditeur de texte -->
+
+       <fieldset><legend>Apparence du texte dans l'éditeur</legend>
+        <label for="police_editeur">Écriture cursive</label><input type="checkbox" id="police_editeur" checked />
+       </fieldset>
+
+       <!-- Options de la voix de synthèse -->
+
+		<fieldset><legend>Voix de synthèse</legend>
+
+      <p><label for="ponctuation">Indiquer la ponctuation : </label><input type="checkbox" id="ponctuation" checked /></p>
+
+      <p><label for="debit">Débit de la voix : </label></p>
+      <p><input type="range" min="0.4" max="1.2" value="0.5" step="0.1" name="debit" />
+       Valeur choisie : <span id="mon_debit">0.6</span></p>
+
+		</fieldset>
+
+    <fieldset>
+      <!-- Options avancées -->
+		<legend>Options avancées</legend>
+		<label for="nom_voix">Personnalité de la voix de synthèse : <span id="ma_voix"></span>
+       - <span id="nom_voix">?</span></label>
+
+          <select id="voix"></select>
+
+       </fieldset>
+    </section>
+
+<!-- =========================================================== -->
+	<!-- SECTION 5 - À PROPOS DE CETTE DICTÉE -->
+<!-- =========================================================== -->
+    <section id="section_item6">
+    <h1><i class="material-icons">info_outline</i>&nbsp;À propos de cette dictée</h1>
+
+    <fieldset>
+       <legend id="titre">Titre de la dictée</legend>
+       <p>Référence : <span id=reference></span>
+       <p>Professeur : <span id="prof">?</span></p>
+       <p>Auteur : <span id="auteur"></span></p>
+       <p>Titre de l'ouvrage : <cite id="ouvrage"></cite></p>
+       <p>Droit d'auteur : <span id="legal">à préciser</p>
+    </fieldset>
+	</section>
+
+  <!-- =========================================================== -->
+  	<!-- SECTION - ATTESTATION -->
+  <!-- =========================================================== -->
+
+  <section id="section_attestation">
+    <h1><i class="material-icons">thumb_up</i>&nbsp;Fin de l'entrainement</h1>
+    <!-- Zone de l'ATTESTATION -->
+    <p><a id="lien_attestation" href="#"><i class="material-icons">file_download</i>Télécharger mon attestation</a></p>
+    <canvas id="attestation" width="446" height="300">
+        Erreur : canevas non reconnu !
+    </canvas>
+    <img id="barcode"></img>
+  </section>
+
+  <!-- =========================================================== -->
+    <!-- SECTION - IDENTIFICATION -->
+  <!-- =========================================================== -->
+  <section id="section_identite">
+    <h1><i class="material-icons">person</i>&nbsp;Identité</h1>
+    <!-- Formulaire d'authentification -->
+    <p>Mon identité servira à éditer mon attestation de fin d'entrainement.</p>
+    <fieldset>
+      <legend>Mon identité</legend>
+      <label class="identite" for"nom"><sup>*</sup>Nom : </label><input type="text" id="nom" value="" /></p>
+      <label class="identite" for "prenom"><sup>*</sup>Prénom : </label><input type="text" id="prenom" value="" /></p>
+      <input type="submit" value="Enregistrer mon identité" id="bouton_enregistrer_identite" />
+    </fieldset>
+
+  </section>
+
+<!-- =========================================================== -->
+  <!-- Zone de message -->
+<!-- =========================================================== -->
+    <aside>
+    <div id="section_message">
+    <p id="bouton_fermer_message">&#9447;</p>
+    <p id="contenu_message">Aucun message</p>
+    </div>
+    </aside>
+
+  </body>
+
+</html>
