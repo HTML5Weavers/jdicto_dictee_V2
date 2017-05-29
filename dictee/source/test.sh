@@ -25,7 +25,7 @@ elif [ $1 = "-web" ]
     python -m SimpleHTTPServer &
     sleep 3
     echo "Dans le navigateur Chrome..."
-    /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome http://localhost:8000 &
+    /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --new-window "http://localhost:8000" &
 
 else
   echo "Argument incorrect"
