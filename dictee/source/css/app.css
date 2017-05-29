@@ -5,16 +5,16 @@
 
 LICENCE
 
-Copyright Patrick CARDONA 2017 
+Copyright Patrick CARDONA 2017
 
-pcardona34@gmail.com 
+pcardona34@gmail.com
 
 Ce logiciel est un programme informatique permettant de s'exercer à la dictée.
 
 Ce logiciel est régi par la licence CeCILL-C soumise au droit français et
 respectant les principes de diffusion des logiciels libres. Vous pouvez
 utiliser, modifier et/ou redistribuer ce programme sous les conditions
-de la licence CeCILL-C telle que diffusée par le CEA, le CNRS et l'INRIA 
+de la licence CeCILL-C telle que diffusée par le CEA, le CNRS et l'INRIA
 sur le site "http://www.cecill.info".
 
 En contrepartie de l'accessibilité au code source et des droits de copie,
@@ -25,16 +25,16 @@ titulaire des droits patrimoniaux et les concédants successifs.
 
 A cet égard  l'attention de l'utilisateur est attirée sur les risques
 associés au chargement,  à l'utilisation,  à la modification et/ou au
-développement et à la reproduction du logiciel par l'utilisateur étant 
-donné sa spécificité de logiciel libre, qui peut le rendre complexe à 
+développement et à la reproduction du logiciel par l'utilisateur étant
+donné sa spécificité de logiciel libre, qui peut le rendre complexe à
 manipuler et qui le réserve donc à des développeurs et des professionnels
 avertis possédant  des  connaissances  informatiques approfondies.  Les
 utilisateurs sont donc invités à charger  et  tester  l'adéquation  du
 logiciel à leurs besoins dans des conditions permettant d'assurer la
-sécurité de leurs systèmes et ou de leurs données et, plus généralement, 
-à l'utiliser et l'exploiter dans les mêmes conditions de sécurité. 
+sécurité de leurs systèmes et ou de leurs données et, plus généralement,
+à l'utiliser et l'exploiter dans les mêmes conditions de sécurité.
 
-Le fait que vous puissiez accéder à cet en-tête signifie que vous avez 
+Le fait que vous puissiez accéder à cet en-tête signifie que vous avez
 pris connaissance de la licence CeCILL-C, et que vous en avez accepté les
 termes.
 
@@ -152,7 +152,7 @@ h2.deplie {
 }
 
 /* Boutons */
-#actions li a, #actions li a:visited, #lire, #pause, #fin, #lire_audio, #pause_audio, #fin_audio {
+#actions li a, #actions li a:visited, #lire, #pause, #fin, #lire_audio, #pause_audio, #fin_audio, input[type=submit] {
     background: linear-gradient(to bottom, #49c0f0, #2cafe3);
     text-decoration: none;
     font-size: 0.8em;
@@ -346,7 +346,7 @@ ins, #solution_affichee {
 }
 
 
-   
+
 
 /* ------------------------------*/
 /* RWD : écran de taille réduite */
@@ -366,7 +366,7 @@ ins, #solution_affichee {
     }
 
     #onglets {
-      width:100%;  
+      width:100%;
     }
 
     #menu_vertical li:first-child, #onglets li:first-child {
@@ -395,7 +395,7 @@ ins, #solution_affichee {
       margin-right: 8px;
       margin-bottom: 18px;
     }
-    
+
 
     h2 ~ ul li a, h2 ~ ul li a:visited {
     border: solid cornflowerblue thin;
@@ -412,7 +412,7 @@ ins, #solution_affichee {
 /* RWD : écran large             */
 /* ------------------------------*/
 @media screen and (min-width: 800px) {
-    
+
     #menu_vertical li, #onglets li {
         display: inline;
         background-color:white;
@@ -525,4 +525,28 @@ p.etape i, .evidence {
 .badge-bleu {
     background-color:cornflowerblue!important;
     color:white!important;
+}
+
+canvas#attestation {
+  background: linear-gradient(45deg, #a7c7dc 0%,#85b2d3 100%);
+  border-radius: 20px;
+}
+
+#barcode {
+  display:none;
+}
+
+#conteneur_qrcode {
+  text-align: center;
+}
+
+input[type=text] {
+  background-color: lavender;
+  border-radius: 4px;
+}
+
+label.identite {
+  width: 150px;
+  display:block;
+  float:left;
 }
