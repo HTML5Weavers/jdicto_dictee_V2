@@ -76,6 +76,7 @@ FIN DE LA LICENCE */
     var MSG_ERREUR_SOMMAIRE = "Le sommaire n'est pas au bon format.";
     var MSG_ERREUR_INCONNUE = "Erreur non définie pour le numéro : ";
     var MSG_TXT_CM = "Texte à choix multiples : recopie ce texte sur ton cahier de brouillon en tenant compte des choix proposés entre crochets : <span class='evidence'>{ }</span>";
+    var MSG_ERREUR_CHAMP_OBLIGATOIRE = "Tous les champs sont obligatoires (*).";
 
 
 /* -------------------------------------------- */
@@ -484,6 +485,19 @@ document.getElementById("onglet_illustrations").addEventListener("click", functi
 
   }); // Fin du forEach items
 
+  /* ---------------------- */
+  // Saisie de l'identité : événement validation du formulaire
+  /* ---------------------- */
+  document.getElementById("bouton_enregistrer_identite").addEventListener("click", function(){
+    var enr = enregistrerIdentite();
+    if(enr === true){
+      revenir(1);
+      afficherMessage(MSG_PREFERENCES);
+      // Masquage auto après 1,5 sec.
+      window.setTimeout(masquerMessage, 1500);
+    }
+  },false);
+
 
  /* -------------------------------- */
  /* INITIALISATION DE L'APP          */
@@ -608,6 +622,21 @@ document.getElementById("onglet_illustrations").addEventListener("click", functi
 // avant qu'il ne soit masqué...
 $.set("corps");
 $.set_classe("chargement");
+
+/* ------------------------------------- */
+// gestionnaire de l'événement Click sur le lien de téléchargement de l'attestation
+/* ------------------------------------- */
+document.getElementById("lien_attestation").addEventListener("click", function(){
+  telechargerCanevas(this, "attestation");
+},false);
+
+/* ------------------------------------- */
+// gestionnaire de l'événement Click sur le lien de téléchargement du QRCode
+/* ------------------------------------- */
+document.getElementById("lien_qrcode").addEventListener("click", function(){
+  telechargerQRCode (this, "qrcode");
+},false);
+
 
 },false); // Fin du gestionnaire d'Event "onload"
 /* ----------------------------------- */
@@ -1198,10 +1227,45 @@ function maj_curseur(){
 function finPreferences(){
   adapteLibelles();
   revenir(1);
-  afficherMessage(MSG_PREFERENCES);
-  // Masquage auto après 1,5 sec.
-  window.setTimeout(masquerMessage, 1500);
+  effacerEditeur();
+  saisirIdentite();
 }
+
+function afficherIdentite(){
+  masquerLesSections();
+  $.set("section_identite");
+  $.montrer();
+} // fin de fonction
+
+function saisirIdentite(){
+  $.set("texte");
+  var entrainement = $.get_valeur();
+  if(entrainement === "0"){
+    var nom = obtenirParametre("JDICTO_NOM");
+    if(!nom){
+      afficherIdentite();
+    }else{
+      afficherMessage(MSG_PREFERENCES);
+      // Masquage auto après 1,5 sec.
+      window.setTimeout(masquerMessage, 1500);
+    }
+  }
+
+} // fin de fonction
+
+function enregistrerIdentite(){
+  var idnom = $.set("nom");
+  var nom = $.get_valeur();
+  var idprenom = $.set("prenom");
+  var prenom = $.get_valeur();
+  if(nom !== '' && prenom !== ''){
+    sessionStorage.setItem("JDICTO_NOM",nom);
+    sessionStorage.setItem("JDICTO_PRENOM",prenom);
+    return true;
+  }else{
+      erreur(7);
+      return false;
+  } }
 
 /* ---------------------------------- */
 // Sélection de la voix de synthèse
@@ -1209,6 +1273,16 @@ function choisirVoix(){
 
   var indice_voix = document.getElementById("voix").selectedIndex;;
   var nom_voix = document.getElementById("voix").options[indice_voix].text;
+  $.set("ma_voix");
+  $.set_texte(indice_voix);
+  console.log(indice_voix);
+  $.set("nom_voix");
+  $.set_texte(nom_voix);
+}
+
+function fixerVoix(nom_voix, indice_voix){
+  $.set("voix");
+  $.set_valeur(indice_voix);
   $.set("ma_voix");
   $.set_texte(indice_voix);
   $.set("nom_voix");
@@ -1260,6 +1334,9 @@ var interval = setInterval(function () {
         s.appendChild(option);
         option.value = i;
         option.textContent = voices[i].name;
+        if(option.textContent === "Google français"){
+          fixerVoix("Google français", i)
+        }
     }
 }, 10);
 }
@@ -1353,11 +1430,12 @@ function comparerTextes (attendu, saisi){
 
       default:
         terminaison = "s";
-    }
+    } // fin du switch
     message = MSG_TON_TEXTE + erreurs + MSG_ERREUR + terminaison + ".";
     type = "erreur";
     bouton = "C"; // reprendre
   }
+
 
   // On constitue puis retourne le tableau bilan
   bilan[0] = resultat;
@@ -1406,6 +1484,15 @@ function afficherErreurs(num_section){
     default:
       definitActionBouton("C",fc,true);
   }
+
+  $.set("texte");
+  var entrainement = $.get_valeur();
+  // Si on a achevé avec succès l'entrainement...
+  if(entrainement === "0" && reponse[1] === MSG_BRAVO){
+    creerAttestation();
+    montrerAttestation();
+  }
+
 } // Fin fonction
 
 /* ------------------------------ */
@@ -1473,7 +1560,7 @@ function ecouterDictee(){
   $.set("mon_debit");
   var rate = $.get_texte();
   dictee.rate = rate;
-  dictee.pitch = 1.2;
+  dictee.pitch = 1.0;
 
   // Mise en pause...
   document.getElementById("pause").addEventListener("click", function(){
@@ -1737,6 +1824,9 @@ function afficherSelecteur(){
       $.set("voix_enregistree");
       $.montrer();
 
+      $.set("dictam");
+      $.masquer();
+
   } // Fin du Switch
 } // Fin de fonction
 
@@ -1850,9 +1940,11 @@ function afficherArticle(article){
 function afficherLienPartage(){
 
     var url = window.location.href;
+    /* Commenter ci-dessous pour tester localement */
     if(url.indexOf("localhost")===7 || url.indexOf("chrome-extension") ===0){
       erreur(5);
     }else{
+    /* Fin de de zone à Commenter pour un test local */
       var numero = obtenirParametre("numero");
       url = url.replace("#","");
       url += "?numero=" + numero;
@@ -1860,7 +1952,8 @@ function afficherLienPartage(){
       $.set_texte(url);
       $.set("section_partage");
       $.montrer();
-    }
+
+    } // fin ELSE à commenter en cas de test local
 } // Fin de fonction
 
 /* ---------------------------------- */
@@ -1872,11 +1965,100 @@ function afficherPartage(){
   //definitActionBouton("J", fj, true);
   if (atonChargeUneDictee()){
     afficherLienPartage();
+    afficherQRcode();
   }else{
     erreur(1);
   }
 } // Fin de fonction
 
+/* ---------------------------------- */
+// Afficher le QRCODE
+/* ---------------------------------- */
+function afficherQRcode(){
+  // Si le lien de partage est généré, on peut générer le QRcode
+  $.set("lien");
+  var lien = $.get_texte();
+  if(lien.length > 0){
+    //new QRCode(document.getElementById('qrcode'), );
+
+    var qrcode = new QRCode(document.getElementById("qrcode"), {
+    	text: lien,
+    	width: 128,
+    	height: 128,
+    	colorDark : "#000000",
+    	colorLight : "#ffffff",
+    	correctLevel : QRCode.CorrectLevel.H
+    });
+
+  }
+  return qrcode;
+} // Fin de fonction
+
+/* ----------------------------------------- */
+// Pour télécharger le QRCode
+/* ----------------------------------------- */
+function telechargerQRCode(lien, img) {
+    var numero = obtenirParametre("numero");
+    lien.href = document.querySelector("#qrcode>img").currentSrc;
+    lien.download = "QRCode_dictee"+numero+".png";
+  } // fin de fonction
+
+/* --------------------------------------------------------- */
+/* ATTESTATION EN CAS DE SUCCES EN MODE ENTRAINEMENT         */
+/* --------------------------------------------------------- */
+// En mode entrainement, la variable texte vaut : 0
+function creerAttestation(){
+  // On obtient le numéro de la dictée courante
+  var numero = obtenirParametre("numero");
+  if (numero){
+    var nom = sessionStorage.getItem("JDICTO_NOM");
+    var prenom = sessionStorage.getItem("JDICTO_PRENOM");
+    var canvas = document.getElementById('attestation');
+    if (canvas.getContext)
+    {
+      var ctx = canvas.getContext('2d');
+      ctx.font = "20pt Sans-Serif";
+      ctx.fillStyle = "white";
+      ctx.textAlign = "center";
+      ctx.fillText("Attestation", canvas.width/2, 36);
+      ctx.font = "32pt Satisfy";
+      ctx.fillStyle = "cornflowerblue";
+      ctx.textAlign = "center";
+      ctx.fillText("JDicto", 160, 80);
+      ctx.fillStyle = "dimgray";
+      ctx.textAlign = "left";
+      //ctx.fillText("Untel", canvas.width/2.4, canvas.height/1.8);
+      ctx.font = "16pt Satisfy";
+      ctx.fillText("Entrainement terminé avec succès.", canvas.width/6, canvas.height/1.1);
+
+      JsBarcode("#barcode", "dictee " + numero + " " +prenom + " " + nom, {format: "code39"});
+
+      var img = new Image();
+      img.onload = function() {
+      ctx.drawImage(this, 4, 100, 438, 142);
+      }
+      img.src = document.getElementById("barcode").src;
+      }}else{
+    erreur(1);
+  }
+} // Fin de la fonction
+
+/* ----------------------------------------- */
+// Montrer l'attestation
+/* ----------------------------------------- */
+function montrerAttestation(){
+  $.set("section_attestation");
+  $.montrer();
+}
+
+/* ----------------------------------------- */
+// Pour télécharger l'attestation
+/* ----------------------------------------- */
+function telechargerCanevas(lien, canevas_Id) {
+    var numero = obtenirParametre("numero");
+    lien.href = document.getElementById(canevas_Id).toDataURL();
+    lien.download = "attestation_dictee_"+numero+".png";
+  } // fin de fonction
 
 /* ----------------------------------------- */
 /* Gestion des ERREURS                       */
@@ -1907,6 +2089,10 @@ function erreur(numero){
 
     case 6:
       message += MSG_ERREUR_SOMMAIRE;
+    break;
+
+    case 7:
+      message += MSG_ERREUR_CHAMP_OBLIGATOIRE;
     break;
 
     default:
