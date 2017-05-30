@@ -51,3 +51,11 @@
   font-size: 1em;
 }
 
+@font-face {
+  font-family: 'Rock+Salt';
+  src: url('../fonts/RockSalt.woff2') format('woff2');
+}
+
+#app_name {
+  font-family: 'Rock+Salt';
+}

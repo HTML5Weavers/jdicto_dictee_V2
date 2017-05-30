@@ -71,10 +71,6 @@ header h1 {
     padding: 6px;
 }
 
-#app_name {
-    font-family: fantasy;
-}
-
 #menu_droit {
     position:absolute;
     top:0;
