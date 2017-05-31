@@ -1081,20 +1081,33 @@ function masquerSommaire(){
   $.masquer();
 } // Fin de fonction
 
-
 /* --------------------------------------------------------- */
-/* GESTIONNAIRE des Paramètres passés à Session STORAGE      */
+/* GESTIONNAIRE des Paramètres passés à l'URL                */
 /* --------------------------------------------------------- */
 // Pour obtenir la valeur de @cle
-// Retourne FAUX si ce paramètre n'est pas disponible
+// Retourne NULL si ce paramètre n'est pas disponible
+
+ function obtenirParametreURL(cle)
+ {
+    var href = window.location.href;
+    var reg = new RegExp( '[?&]' + cle + '=([^&#]*)', 'i' );
+    var string = reg.exec(href);
+    return string ? string[1] : null;
+ }
+
+ /* --------------------------------------------------------- */
+ /* GESTIONNAIRE des Paramètres passés à Session STORAGE      */
+ /* --------------------------------------------------------- */
+ // Pour obtenir la valeur de @cle
+ // Retourne FAUX si ce paramètre n'est pas disponible
 
 function obtenirParametre(cle)
 {
        // On cherche si un paramètre a été passé dans l'URL
        // Cas application Web
-       var params = new URLSearchParams(window.location.search);
-       if (params.has(cle)){
-         var valeur = params.get(cle);
+       var valeur = obtenirParametreURL(cle);
+
+       if (valeur){
          sessionStorage.setItem(cle, valeur);
          document.location.href = window.location.origin + window.location.pathname;
          return valeur;
@@ -1979,8 +1992,9 @@ function afficherQRcode(){
   $.set("lien");
   var lien = $.get_texte();
   if(lien.length > 0){
-    //new QRCode(document.getElementById('qrcode'), );
-
+    // On efface le qrcode précédent
+    $.set("qrcode");
+    $.set_html("");
     var qrcode = new QRCode(document.getElementById("qrcode"), {
     	text: lien,
     	width: 128,
